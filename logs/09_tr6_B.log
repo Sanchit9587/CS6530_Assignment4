@@ -1,0 +1,5 @@
+22:38:54 [B] host=sanchit-Inspiron-15-3511 openssl=OpenSSL 3.5.4 30 Sep 2025 (Library: OpenSSL 3.5.4 30 Sep 2025)
+22:38:54 [B] connected to 172.20.10.3:6530 from 172.20.10.2
+22:38:55 [B] RECV [A leaf 4029B, inter 4048B, KEM pub 1206B, sig 2420B]
+22:38:55 [B] A certificate path OK: subject=CN=server-A,O=CS6530
+22:38:55 [B] REJECT (ML-DSA signature on KEM public key failed) - NOT encapsulating

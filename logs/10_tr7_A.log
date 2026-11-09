@@ -1,0 +1,8 @@
+22:39:35 [A] host=Aayushs-MacBook-Air.local openssl=OpenSSL 3.5.9 29 Sep 2026 (Library: OpenSSL 3.5.9 29 Sep 2026)
+22:39:35 [A] listening on 0.0.0.0:6530
+22:40:03 [A] connection from 172.20.10.2:59402
+22:40:03 [A] ML-KEM-768 pub DER=1206B, ML-DSA sig over it=2420B
+22:40:03 [A] SENT [A leaf 4029B, inter 4048B, KEM pub 1206B, sig 2420B]
+22:40:03 [A] RECV [KEM ct 1088B, salt 32B, nonce 12B, enc+tag 48B, B leaf 4029B, B inter 4048B, B sig 2420B]
+22:40:03 [A] B certificate path OK: subject=CN=client-B,O=CS6530
+22:40:03 [A] REJECT (ML-DSA transcript signature verification failed) - no plaintext released

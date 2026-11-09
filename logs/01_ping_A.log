@@ -1,0 +1,5 @@
+22:26:49 [A] host=Aayushs-MacBook-Air.local openssl=OpenSSL 3.5.9 29 Sep 2026 (Library: OpenSSL 3.5.9 29 Sep 2026)
+22:26:49 [A] listening on 0.0.0.0:6530
+22:27:13 [A] connection from 172.20.10.2:56618
+22:27:13 [A] RECV b'PING from client-B sanchit-Inspiron-15-3511'
+22:27:13 [A] SENT pong

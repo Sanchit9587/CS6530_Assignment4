@@ -1,0 +1,9 @@
+[B] OpenSSL: OpenSSL 3.5.4 30 Sep 2025 (Library: OpenSSL 3.5.4 30 Sep 2025)   host: sanchit-Inspiron-15-3511
+Certificate request self-signature ok
+subject=O=CS6530, CN=CS6530 ECDSA P-256 Intermediate
+Certificate request self-signature ok
+subject=O=CS6530, CN=ecdsa-signer-B
+
+== ECDSA root fingerprint ==
+sha256 Fingerprint=7D:28:0A:07:35:84:82:57:7B:E0:52:1D:B5:7D:A0:12:1E:0F:15:60:17:64:71:ED:1F:7F:A7:D4:C8:5A:29:03
+leaf.pem: OK

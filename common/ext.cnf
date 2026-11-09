@@ -1,0 +1,19 @@
+# X.509 v3 extension profiles (used with: openssl x509 -req -extfile ext.cnf -extensions <name>)
+
+[v3_root]
+basicConstraints       = critical, CA:TRUE
+keyUsage               = critical, keyCertSign, cRLSign
+subjectKeyIdentifier   = hash
+authorityKeyIdentifier = keyid:always
+
+[v3_inter]
+basicConstraints       = critical, CA:TRUE, pathlen:0
+keyUsage               = critical, keyCertSign, cRLSign
+subjectKeyIdentifier   = hash
+authorityKeyIdentifier = keyid:always
+
+[v3_leaf]
+basicConstraints       = critical, CA:FALSE
+keyUsage               = critical, digitalSignature
+subjectKeyIdentifier   = hash
+authorityKeyIdentifier = keyid:always

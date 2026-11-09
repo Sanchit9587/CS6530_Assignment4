@@ -1,0 +1,11 @@
+22:36:36 [A] host=Aayushs-MacBook-Air.local openssl=OpenSSL 3.5.9 29 Sep 2026 (Library: OpenSSL 3.5.9 29 Sep 2026)
+22:36:36 [A] listening on 0.0.0.0:6530
+22:37:13 [A] connection from 172.20.10.2:37166
+22:37:13 [A] ML-KEM-768 pub DER=1206B, ML-DSA sig over it=2420B
+22:37:13 [A] SENT [A leaf 4029B, inter 4048B, KEM pub 1206B, sig 2420B]
+22:37:13 [A] RECV [KEM ct 1088B, salt 32B, nonce 12B, enc+tag 48B, B leaf 4029B, B inter 4048B, B sig 2420B]
+22:37:13 [A] B certificate path OK: subject=CN=client-B,O=CS6530
+22:37:13 [A] B transcript signature OK (1219B transcript)
+22:37:13 [A] decapsulated shared secret: 32B  fingerprint=91d280e0e146a260
+22:37:13 [A] HKDF-SHA-256 -> 32B AES key derived independently (key fp=2a91e943a927fa0e)
+22:37:13 [A] AES-GCM tag OK. PLAINTEXT: CS6530 A4 team CE24B033 CE24B107

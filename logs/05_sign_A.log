@@ -1,0 +1,6 @@
+Certificate request self-signature verify OK
+subject=O=CS6530, CN=client-B
+Certificate request self-signature ok
+subject=O=CS6530, CN=client-B
+b_leaf.pem: OK
+Return to B: b_leaf.pem inter.pem root.pem

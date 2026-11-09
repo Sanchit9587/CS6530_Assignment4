@@ -1,0 +1,8 @@
+Aayushs-MacBook-Air.local
+172.20.10.3
+ProductName:		macOS
+ProductVersion:		14.6.1
+BuildVersion:		23G93
+OpenSSL 3.5.9 29 Sep 2026 (Library: OpenSSL 3.5.9 29 Sep 2026)
+Name: cryptography
+Version: 46.0.1

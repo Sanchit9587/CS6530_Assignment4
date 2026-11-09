@@ -1,0 +1,10 @@
+[A] OpenSSL: OpenSSL 3.5.9 29 Sep 2026 (Library: OpenSSL 3.5.9 29 Sep 2026)   host: Aayushs-MacBook-Air.local
+Certificate request self-signature ok
+subject=O=CS6530, CN=CS6530 ML-DSA-44 Intermediate
+Certificate request self-signature ok
+subject=O=CS6530, CN=server-A
+
+== ML-DSA root fingerprint (check out-of-band with B) ==
+sha256 Fingerprint=BE:6D:79:D1:BB:A5:F7:33:AC:B7:1B:F5:4B:0E:2D:C8:CB:79:0C:A1:AF:21:4B:92:2B:AA:08:C0:64:72:B3:10
+a_leaf.pem: OK
+Give B these PUBLIC files: root.pem inter.pem   (never the .key files)

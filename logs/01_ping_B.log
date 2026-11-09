@@ -1,0 +1,4 @@
+22:27:12 [B] host=sanchit-Inspiron-15-3511 openssl=OpenSSL 3.5.4 30 Sep 2025 (Library: OpenSSL 3.5.4 30 Sep 2025)
+22:27:13 [B] connected to 172.20.10.3:6530 from 172.20.10.2
+22:27:13 [B] SENT ping
+22:27:13 [B] RECV b'PONG from server-A Aayushs-MacBook-Air.local'

@@ -1,0 +1,34 @@
+== DER sizes (bytes) ==
+                               ECDSA P-256     ML-DSA-44
+root cert                              445          4037
+intermediate cert                      456          4048
+leaf cert                              442          4029
+complete chain (3 certs)              1343         12114
+sent path (leaf+inter)                 898          8077
+leaf public key (SPKI DER)              91          1334
+signature                               71          2420   (ECDSA DER sig varies 70-72B)
+ML-KEM-768: public key DER 1206B, ciphertext 1088B, shared secret 32B
+
+== CLI timings, median of 20 (includes process start-up) ==
+baseline `openssl version`       2.40 ms
+ECDSA keygen                     5.47 ms
+ML-DSA-44 keygen                 5.45 ms
+ML-KEM-768 keygen                7.17 ms
+ECDSA sign                       5.00 ms
+ML-DSA-44 sign                   5.50 ms
+ECDSA verify                     3.50 ms
+ML-DSA-44 verify                 2.87 ms
+ML-KEM-768 encap                 3.41 ms
+ML-KEM-768 decap                 2.81 ms
+
+== openssl speed (raw primitive ops/s, 1 s each) ==
+(ML-DSA-44 is not benchmarkable via `openssl speed` in 3.5; use the CLI timings above)
+                              sign    verify    sign/s verify/s
+ 256 bits ecdsa (nistp256)   0.0000s   0.0001s  46259.2  13940.0
+Doing 256 bits sign ecdsa ops for 1s: 45334 256 bits ECDSA sign ops in 0.98s
+Doing 256 bits verify ecdsa ops for 1s: 13940 256 bits ECDSA verify ops in 1.00s
+                               keygen    encaps    decaps keygens/s  encaps/s  decaps/s
+                 ML-KEM-768 0.000038s 0.000021s 0.000034s   26529.3   46688.9   29660.0
+Doing ML-KEM-768 keygen ops for 1s: 26264 ML-KEM-768 KEM keygen ops in 0.99s
+Doing ML-KEM-768 encaps ops for 1s: 46222 ML-KEM-768 KEM encaps ops in 0.99s
+Doing ML-KEM-768 decaps ops for 1s: 29660 ML-KEM-768 KEM decaps ops in 1.00s

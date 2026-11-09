@@ -1,0 +1,12 @@
+22:41:17 [A] host=Aayushs-MacBook-Air.local openssl=OpenSSL 3.5.9 29 Sep 2026 (Library: OpenSSL 3.5.9 29 Sep 2026)
+22:41:17 [A] listening on 0.0.0.0:6530
+22:42:00 [A] connection from 172.20.10.2:57528
+22:42:00 [A] ML-KEM-768 pub DER=1206B, ML-DSA sig over it=2420B
+22:42:00 [A] SENT [A leaf 4029B, inter 4048B, KEM pub 1206B, sig 2420B]
+22:42:00 [A] RECV [KEM ct 1088B, salt 32B, nonce 12B, enc+tag 48B, B leaf 4029B, B inter 4048B, B sig 2420B]
+22:42:00 [A] B certificate path OK: subject=CN=client-B,O=CS6530
+22:42:00 [A] B transcript signature OK (1219B transcript)
+22:42:00 [A] TR-8: decapsulating with a DIFFERENT ML-KEM-768 private key
+22:42:00 [A] decapsulated shared secret: 32B  fingerprint=5e5c73dc7d22ac71
+22:42:00 [A] HKDF-SHA-256 -> 32B AES key derived independently (key fp=0e49be67819d9f7d)
+22:42:00 [A] REJECT (AES-GCM authentication failed) - no plaintext released

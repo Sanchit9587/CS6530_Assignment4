@@ -1,0 +1,11 @@
+22:40:03 [B] host=sanchit-Inspiron-15-3511 openssl=OpenSSL 3.5.4 30 Sep 2025 (Library: OpenSSL 3.5.4 30 Sep 2025)
+22:40:03 [B] connected to 172.20.10.3:6530 from 172.20.10.2
+22:40:03 [B] RECV [A leaf 4029B, inter 4048B, KEM pub 1206B, sig 2420B]
+22:40:03 [B] A certificate path OK: subject=CN=server-A,O=CS6530
+22:40:03 [B] A's ML-KEM-768 public key signature OK -> key authenticated
+22:40:03 [B] encapsulated: ct=1088B shared secret=32B fingerprint=811a94e0ea3a1eb5
+22:40:03 [B] HKDF-SHA-256 -> 32B AES key (key fp=1554a03534e8e1f9)
+22:40:03 [B] AES-256-GCM record=48B (incl. 16B tag); transcript sig=2420B
+22:40:03 [B] TR-7: flipped 1 bit of ciphertext AFTER signing (signature not recomputed)
+22:40:03 [B] SENT record [ct, salt, nonce, enc+tag, B leaf, B inter, B sig]
+22:40:03 [B] A closed without ACK (A rejected the record)

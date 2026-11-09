@@ -1,0 +1,2 @@
+Send /home/sanchit/Desktop/Sanchit/CS6530_Assignment4/pki/mldsa_b/b_leaf.csr to A. When A returns b_leaf.pem, inter.pem, root.pem, put them in /home/sanchit/Desktop/Sanchit/CS6530_Assignment4/pki/mldsa_b/
+Then on B compare:  /home/sanchit/o35/bin/openssl x509 -in /home/sanchit/Desktop/Sanchit/CS6530_Assignment4/pki/mldsa_b/root.pem -noout -fingerprint -sha256

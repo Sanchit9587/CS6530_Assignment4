@@ -1,0 +1,90 @@
+host=sanchit-Inspiron-15-3511 OpenSSL 3.5.4 30 Sep 2025 (Library: OpenSSL 3.5.4 30 Sep 2025)
+
+== TR-1 valid paths ==
+$ V -CAfile pki/ecdsa/root.pem -untrusted pki/ecdsa/inter.pem -show_chain pki/ecdsa/leaf.pem
+    /home/sanchit/Desktop/Sanchit/CS6530_Assignment4/pki/ecdsa/leaf.pem: OK
+    Chain:
+    depth=0: O=CS6530, CN=ecdsa-signer-B (untrusted)
+    depth=1: O=CS6530, CN=CS6530 ECDSA P-256 Intermediate (untrusted)
+    depth=2: O=CS6530, CN=CS6530 ECDSA P-256 Root
+  => PASS (expected ok)
+$ V -CAfile pki/mldsa_b/root.pem -untrusted pki/mldsa_b/inter.pem -show_chain pki/mldsa_b/b_leaf.pem
+    /home/sanchit/Desktop/Sanchit/CS6530_Assignment4/pki/mldsa_b/b_leaf.pem: OK
+    Chain:
+    depth=0: O=CS6530, CN=client-B (untrusted)
+    depth=1: O=CS6530, CN=CS6530 ML-DSA-44 Intermediate (untrusted)
+    depth=2: O=CS6530, CN=CS6530 ML-DSA-44 Root
+  => PASS (expected ok)
+$ V -CAfile pki/mldsa_b/root.pem -untrusted pki/mldsa_b/inter.pem -show_chain pki/mldsa_b/a_leaf.pem
+    /home/sanchit/Desktop/Sanchit/CS6530_Assignment4/pki/mldsa_b/a_leaf.pem: OK
+    Chain:
+    depth=0: O=CS6530, CN=server-A (untrusted)
+    depth=1: O=CS6530, CN=CS6530 ML-DSA-44 Intermediate (untrusted)
+    depth=2: O=CS6530, CN=CS6530 ML-DSA-44 Root
+  => PASS (expected ok)
+
+== FR-4 / TR-2 signatures ==
+$ /home/sanchit/o35/bin/openssl dgst -sha256 -verify artifacts/tests/ecdsa_pub.pem -signature artifacts/tests/ecdsa.sig artifacts/tests/msg.txt
+    Verified OK
+  => PASS (expected ok)
+$ /home/sanchit/o35/bin/openssl dgst -sha256 -verify artifacts/tests/ecdsa_pub.pem -signature artifacts/tests/ecdsa.sig artifacts/tests/msg_altered.txt
+    805BA23CAD750000:error:030000EA:digital envelope routines:EVP_DigestVerifyFinal:provider signature failure:crypto/evp/m_sigver.c:703:ECDSA digest_verify_final:
+    Verification failure
+  => PASS (expected fail)
+$ /home/sanchit/o35/bin/openssl pkeyutl -verify -rawin -certin -inkey pki/mldsa_b/b_leaf.pem -in artifacts/tests/msg.txt -sigfile artifacts/tests/mldsa.sig
+    Signature Verified Successfully
+  => PASS (expected ok)
+$ /home/sanchit/o35/bin/openssl pkeyutl -verify -rawin -certin -inkey pki/mldsa_b/b_leaf.pem -in artifacts/tests/msg_altered.txt -sigfile artifacts/tests/mldsa.sig
+    803BC742A0740000:error:030000EA:digital envelope routines:EVP_DigestVerify:provider signature failure:crypto/evp/m_sigver.c:781:ML-DSA-44 digest_verify:
+    Signature Verification Failure
+  => PASS (expected fail)
+
+== TR-3 wrong trust anchor (correct intermediate, other PKI's root) ==
+$ V -CAfile pki/mldsa_b/root.pem -untrusted pki/ecdsa/inter.pem pki/ecdsa/leaf.pem
+    O=CS6530, CN=CS6530 ECDSA P-256 Intermediate
+    error 20 at 1 depth lookup: unable to get local issuer certificate
+    error /home/sanchit/Desktop/Sanchit/CS6530_Assignment4/pki/ecdsa/leaf.pem: verification failed
+  => PASS (expected fail)
+$ V -CAfile pki/ecdsa/root.pem -untrusted pki/mldsa_b/inter.pem pki/mldsa_b/b_leaf.pem
+    O=CS6530, CN=CS6530 ML-DSA-44 Intermediate
+    error 20 at 1 depth lookup: unable to get local issuer certificate
+    error /home/sanchit/Desktop/Sanchit/CS6530_Assignment4/pki/mldsa_b/b_leaf.pem: verification failed
+  => PASS (expected fail)
+
+== TR-4 missing intermediate (correct root only) ==
+$ V -CAfile pki/ecdsa/root.pem pki/ecdsa/leaf.pem
+    O=CS6530, CN=ecdsa-signer-B
+    error 20 at 0 depth lookup: unable to get local issuer certificate
+    error /home/sanchit/Desktop/Sanchit/CS6530_Assignment4/pki/ecdsa/leaf.pem: verification failed
+  => PASS (expected fail)
+$ V -CAfile pki/mldsa_b/root.pem pki/mldsa_b/b_leaf.pem
+    O=CS6530, CN=client-B
+    error 20 at 0 depth lookup: unable to get local issuer certificate
+    error /home/sanchit/Desktop/Sanchit/CS6530_Assignment4/pki/mldsa_b/b_leaf.pem: verification failed
+  => PASS (expected fail)
+
+== issuer relationships ==
+ecdsa/root.pem:
+    subject=O=CS6530, CN=CS6530 ECDSA P-256 Root
+    issuer=O=CS6530, CN=CS6530 ECDSA P-256 Root
+    serial=2001
+ecdsa/inter.pem:
+    subject=O=CS6530, CN=CS6530 ECDSA P-256 Intermediate
+    issuer=O=CS6530, CN=CS6530 ECDSA P-256 Root
+    serial=2002
+ecdsa/leaf.pem:
+    subject=O=CS6530, CN=ecdsa-signer-B
+    issuer=O=CS6530, CN=CS6530 ECDSA P-256 Intermediate
+    serial=2003
+mldsa_b/root.pem:
+    subject=O=CS6530, CN=CS6530 ML-DSA-44 Root
+    issuer=O=CS6530, CN=CS6530 ML-DSA-44 Root
+    serial=1001
+mldsa_b/inter.pem:
+    subject=O=CS6530, CN=CS6530 ML-DSA-44 Intermediate
+    issuer=O=CS6530, CN=CS6530 ML-DSA-44 Root
+    serial=1002
+mldsa_b/b_leaf.pem:
+    subject=O=CS6530, CN=client-B
+    issuer=O=CS6530, CN=CS6530 ML-DSA-44 Intermediate
+    serial=1004
